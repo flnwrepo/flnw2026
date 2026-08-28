@@ -1,0 +1,6 @@
+{"_type": "businessQuestion","_id": "q-1","question": "Your team is already using AI. Do you know which tools, with what data?","emphasisWords": ["AI"],"order": 1}
+{"_type": "businessQuestion","_id": "q-2","question": "Is company data leaving your organization through AI tools you haven't sanctioned?","emphasisWords": ["haven't sanctioned"],"order": 2}
+{"_type": "businessQuestion","_id": "q-3","question": "Are you ready for CMMC, NIST, HIPAA, or your next security review?","emphasisWords": ["CMMC"],"order": 3}
+{"_type": "businessQuestion","_id": "q-4","question": "Do you have an AI policy — or is it a document nobody reads?","emphasisWords": ["nobody reads"],"order": 4}
+{"_type": "businessQuestion","_id": "q-5","question": "Are your IT procedures documented — or does one person simply know everything?","emphasisWords": ["one person"],"order": 5}
+{"_type": "businessQuestion","_id": "q-6","question": "Who is managing your vendors, contracts, renewals, and costs?","emphasisWords": [],"order": 6}

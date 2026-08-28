@@ -1,0 +1,17 @@
+{
+  "apiHost": "https://api.sanity.io",
+  "cors": [
+    {
+      "origin": "http://localhost:4321",
+      "credentials": true
+    },
+    {
+      "origin": "https://frontlinecio.com",
+      "credentials": true
+    },
+    {
+      "origin": "https://flnw.com",
+      "credentials": true
+    }
+  ]
+}

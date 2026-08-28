@@ -1,0 +1,138 @@
+{
+  "_type": "homepage",
+  "_id": "homepage",
+  "title": "Frontline Homepage",
+  "sections": [
+    {
+      "_type": "heroBlock",
+      "_key": "hero-1",
+      "eyebrow": "FRONTLINE",
+      "headline": "IT Leadership.\nCybersecurity.\nGovernance.\nAI Enablement.",
+      "supportingCopy": "Frontline delivers the strategic function of a CIO alongside the governance apparatus most SMBs cannot staff internally. Clients engage us as a strategic partner embedded in their planning, budgeting, and governance cycles — not as a transactional vendor.",
+      "primaryCta": "Start a Conversation",
+      "primaryCtaLink": "#contact",
+      "secondaryCta": "Explore Our Approach",
+      "secondaryCtaLink": "#approach"
+    },
+    {
+      "_type": "questionsBlock",
+      "_key": "questions-1",
+      "label": "Questions we hear",
+      "title": "The conversations that should be happening in the executive room.",
+      "sectionNumber": "01",
+      "questions": [
+        { "_key": "q1", "text": "Your team is already using AI. Do you know which tools, with what data?", "emphasisWords": ["AI"] },
+        { "_key": "q2", "text": "Is company data leaving your organization through AI tools you haven't sanctioned?", "emphasisWords": ["haven't sanctioned"] },
+        { "_key": "q3", "text": "Are you ready for CMMC, NIST, HIPAA, or your next security review?", "emphasisWords": ["CMMC"] },
+        { "_key": "q4", "text": "Do you have an AI policy — or is it a document nobody reads?", "emphasisWords": ["nobody reads"] },
+        { "_key": "q5", "text": "Are your IT procedures documented — or does one person simply know everything?", "emphasisWords": ["one person"] },
+        { "_key": "q6", "text": "Who is managing your vendors, contracts, renewals, and costs?", "emphasisWords": [] }
+      ],
+      "closingLine": "These are the questions Frontline is built to answer."
+    },
+    {
+      "_type": "practicesBlock",
+      "_key": "practices-1",
+      "label": "Service lines",
+      "title": "Four lines. One partner.",
+      "aside": "Frontline works as a single partner across leadership, governance, AI enablement, and managed services — so technology decisions stay connected to the business and to the controls that protect it.",
+      "sectionNumber": "02",
+      "theme": "dark",
+      "practices": [
+        { "_type": "reference", "_key": "p1", "_ref": "practice-fractional-cio" },
+        { "_type": "reference", "_key": "p2", "_ref": "practice-grc" },
+        { "_type": "reference", "_key": "p3", "_ref": "practice-ai-governance" },
+        { "_type": "reference", "_key": "p4", "_ref": "practice-managed-services" }
+      ]
+    },
+    {
+      "_type": "operatingModelBlock",
+      "_key": "model-1",
+      "label": "The Frontline operating model",
+      "title": "From ad-hoc IT to technology leadership.",
+      "aside": "A disciplined path most organizations can move through — one stage building on the last.",
+      "sectionNumber": "03",
+      "spacing": "tall",
+      "stages": [
+        { "_type": "reference", "_key": "s1", "_ref": "stage-1" },
+        { "_type": "reference", "_key": "s2", "_ref": "stage-2" },
+        { "_type": "reference", "_key": "s3", "_ref": "stage-3" },
+        { "_type": "reference", "_key": "s4", "_ref": "stage-4" },
+        { "_type": "reference", "_key": "s5", "_ref": "stage-5" }
+      ],
+      "marginNote": "Most organizations are stuck between Standardize and Secure"
+    },
+    {
+      "_type": "industriesBlock",
+      "_key": "industries-1",
+      "label": "Industries & experience",
+      "title": "Where Frontline works.",
+      "sectionNumber": "04",
+      "spacing": "compact",
+      "industries": [
+        { "_type": "reference", "_key": "i1", "_ref": "ind-1" },
+        { "_type": "reference", "_key": "i2", "_ref": "ind-2" },
+        { "_type": "reference", "_key": "i3", "_ref": "ind-3" },
+        { "_type": "reference", "_key": "i4", "_ref": "ind-4" },
+        { "_type": "reference", "_key": "i5", "_ref": "ind-5" },
+        { "_type": "reference", "_key": "i6", "_ref": "ind-6" }
+      ],
+      "note": "Small and mid-sized businesses without in-house IT leadership that need governance, compliance posture, and strategic oversight. Headquartered in Ventura, CA — serving Southern California and available nationwide."
+    },
+    {
+      "_type": "outcomesBlock",
+      "_key": "outcomes-1",
+      "label": "Selected outcomes",
+      "title": "What disciplined technology work looks like in practice.",
+      "sectionNumber": "05",
+      "theme": "dark",
+      "outcomes": [
+        { "_type": "reference", "_key": "o1", "_ref": "outcome-1" },
+        { "_type": "reference", "_key": "o2", "_ref": "outcome-2" },
+        { "_type": "reference", "_key": "o3", "_ref": "outcome-3" }
+      ]
+    },
+    {
+      "_type": "customTextBlock",
+      "_key": "differentiators-1",
+      "label": "What sets Frontline apart",
+      "title": "Compliance and AI governance delivered together.",
+      "sectionNumber": "06",
+      "theme": "light",
+      "spacing": "normal",
+      "body": [
+        {
+          "_type": "block",
+          "_key": "d1",
+          "style": "normal",
+          "children": [{ "_type": "span", "_key": "d1c1", "text": "Few competitors pair compliance and AI governance credibly. AI governance is increasingly a control requirement in its own right — it belongs inside the GRC program, not bolted on.", "marks": [] }]
+        }
+      ]
+    },
+    {
+      "_type": "insightsBlock",
+      "_key": "insights-1",
+      "label": "Insights",
+      "title": "Notes from the field.",
+      "sectionNumber": "07",
+      "maxDisplay": 3,
+      "insights": [
+        { "_type": "reference", "_key": "in1", "_ref": "insight-1" },
+        { "_type": "reference", "_key": "in2", "_ref": "insight-2" },
+        { "_type": "reference", "_key": "in3", "_ref": "insight-3" }
+      ]
+    },
+    {
+      "_type": "ctaBlock",
+      "_key": "cta-1",
+      "label": "Start a conversation",
+      "title": "Tell us where the business is going.\nWe'll talk about how technology gets there.",
+      "lede": "A 30-minute conversation with a Frontline principal. No pitch deck, no scope — just a clear read on where you stand and what to do next.",
+      "buttonLabel": "Start a Conversation",
+      "email": "info@frontlinecio.com",
+      "phone": "805.880.2251",
+      "sectionNumber": "08",
+      "spacing": "tall"
+    }
+  ]
+}

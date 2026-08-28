@@ -1,0 +1,29 @@
+# Dependencies
+studio/node_modules/
+
+# Sanity build output
+studio/dist/
+studio/.sanity/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local Node.js install (user-space, not part of project)
+# (Node is installed at ~/.local/node — outside the repo, so no need to ignore)

@@ -1,0 +1,6 @@
+{"_type": "industry","_id": "ind-1","name": "Healthcare","order": 1}
+{"_type": "industry","_id": "ind-2","name": "Financial Services & Banking","order": 2}
+{"_type": "industry","_id": "ind-3","name": "Professional Services","order": 3}
+{"_type": "industry","_id": "ind-4","name": "Government Contractors","order": 4}
+{"_type": "industry","_id": "ind-5","name": "Manufacturing & Production","order": 5}
+{"_type": "industry","_id": "ind-6","name": "Mergers, Acquisitions & Business Transitions","order": 6}
