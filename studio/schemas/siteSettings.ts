@@ -26,7 +26,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'Frontline helps small and midsized organizations plan, secure, govern, and improve their technology environments. We combine experienced technology leadership with cybersecurity, compliance, engineering, and managed services so strategy can move directly into execution.',
+        'Frontline helps small businesses and nonprofits plan, secure, govern, and improve their technology environments. We combine experienced technology leadership with cybersecurity, compliance, engineering, and managed services so strategy can move directly into execution.',
     }),
     defineField({
       name: 'heroPrimaryCta',
@@ -46,7 +46,7 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'The conversations that belong in the executive room.',
+        'The conversations that keep getting postponed.',
     }),
     defineField({
       name: 'questionsClose',
@@ -94,7 +94,7 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'Small and midsized organizations — headquartered in Ventura, CA, serving Southern California and available nationwide.',
+        'Frontline\u2019s leadership brings decades of experience supporting regulated, operational, professional, and technical environments \u2014 most of it with organizations small enough that everyone knows everyone.',
     }),
     defineField({
       name: 'outcomesTitle',
@@ -153,16 +153,12 @@ export default defineType({
       initialValue: 'Technology Leadership. Cybersecurity. Governance.',
     }),
     defineField({
-      name: 'footerLocation',
-      title: 'Footer — Location',
-      type: 'string',
-      initialValue: 'Headquartered in Ventura, CA',
-    }),
-    defineField({
-      name: 'footerServes',
-      title: 'Footer — Service Area',
-      type: 'string',
-      initialValue: 'Serving Southern California · Available nationwide',
+      name: 'footerLocations',
+      title: 'Footer — Locations',
+      type: 'array',
+      of: [{ type: 'string' }],
+      initialValue: ['Ventura, CA', 'New York, NY'],
+      description: 'Office cities. Kept deliberately understated — no "headquartered in" framing.',
     }),
   ],
   preview: {

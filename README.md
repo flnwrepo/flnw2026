@@ -3,8 +3,8 @@
 **Technology Leadership. Cybersecurity. Governance.**
 _Strategy backed by execution._
 
-A static, editorial website for **Frontline**, a technology services company
-headquartered in Ventura, CA, serving small and midsized organizations.
+A static, editorial website for **Frontline**, a technology services company serving
+small businesses and nonprofits, with offices in Ventura, CA and New York, NY.
 
 ## Structure
 
@@ -83,7 +83,7 @@ any static host without rewrite rules.
 ## Homepage flow
 
 1. Hero — Technology Leadership. Cybersecurity. Governance.
-2. Executive questions
+2. Questions worth asking
 3. Five service areas (each links to its breakout page)
 4. Frontline operating model — Assess → Standardize → Secure → Govern → Lead
 5. Strategy backed by execution
@@ -106,6 +106,18 @@ stubbed. To bring it back:
 3. Add **Insights** back to `src/partials/header.html` and `footer.html`.
 4. Run `python3 build.py`.
 
+## Who the site is written for
+
+Frontline's clients are small businesses and nonprofits — typically a few dozen
+employees, with no internal IT department or one person carrying it alongside
+another job. Copy should read for an owner or director, not a corporate
+executive team. Nonprofit realities (donor data, funder and grant security
+requirements, lean budgets, board reporting, volunteer turnover) are named
+explicitly on the homepage.
+
+Office locations are kept understated — two cities in the footer, no
+"headquartered in" framing and no service-area claims.
+
 ## Content accuracy
 
 Two rules the site is built to hold to:
@@ -115,9 +127,10 @@ Two rules the site is built to hold to:
   only return if they reflect a real, documented engagement that can be
   substantiated publicly. The `outcome` Sanity type carries this warning in the
   Studio.
-- **No vaporware.** The Private AI page separates *Available today*, *Current
-  Frontline Private AI capability*, and *Developing / roadmap*. Roadmap items
-  are not described as generally available.
+- **No vaporware.** The Private AI page says Frontline is *developing* private AI
+  architectures and that RAG is *being designed*, and it states plainly that
+  private AI infrastructure still costs money. Nothing on that page describes a
+  capability as generally available before it is.
 
 ## Enabling the CMS (Sanity)
 

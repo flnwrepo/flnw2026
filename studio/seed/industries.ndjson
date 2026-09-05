@@ -3,5 +3,4 @@
 {"_type": "industry", "_id": "industry-3", "name": "Professional Services", "order": 3}
 {"_type": "industry", "_id": "industry-4", "name": "Government Contractors", "order": 4}
 {"_type": "industry", "_id": "industry-5", "name": "Manufacturing & Production", "order": 5}
-{"_type": "industry", "_id": "industry-6", "name": "Regulated Organizations", "order": 6}
-{"_type": "industry", "_id": "industry-7", "name": "Multi-location Businesses", "order": 7}
+{"_type": "industry", "_id": "industry-6", "name": "Nonprofits", "order": 6}

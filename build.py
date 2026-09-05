@@ -34,7 +34,7 @@ PAGES = [
         "path": "/",
         "title": "Frontline — Technology Leadership. Cybersecurity. Governance.",
         "description": (
-            "Frontline helps small and midsized organizations plan, secure, govern, and improve "
+            "Frontline helps small businesses and nonprofits plan, secure, govern, and improve "
             "their technology environments — combining technology leadership, cybersecurity, GRC, "
             "engineering, and managed services so strategy moves into execution."
         ),
