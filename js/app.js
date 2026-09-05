@@ -117,7 +117,7 @@
 
       if (!keyField || keyField.value === PLACEHOLDER_KEY) {
         setStatus(
-          "This form is not connected yet — the Web3Forms access key still needs to be set. " +
+          "This form is not connected yet. The Web3Forms access key still needs to be set. " +
             "Email info@frontlinecio.com in the meantime.",
           "error"
         );
@@ -131,7 +131,7 @@
 
       // Put the sender in the subject so the PSA ticket summary identifies them.
       var who = name + (company ? ", " + company : "");
-      data.set("subject", "Website enquiry — " + who + " (" + email + ")");
+      data.set("subject", "Website enquiry: " + who + " (" + email + ")");
       if (subjectEl) subjectEl.value = data.get("subject");
 
       submitBtn.disabled = true;

@@ -41,13 +41,13 @@
               action="https://api.web3forms.com/submit"
               method="POST"
             >
-              <!-- Web3Forms configuration. Replace the access key — see README. -->
+              <!-- Web3Forms configuration. Replace the access key. See README. -->
               <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE" />
               <input type="hidden" name="from_name" value="Frontline website" />
               <!-- Fallback subject when JavaScript is unavailable. The script
                    replaces this with one naming the sender, so the PSA ticket
                    summary identifies them. -->
-              <input type="hidden" name="subject" id="contactSubject" value="Website enquiry — frontlinecio.com" />
+              <input type="hidden" name="subject" id="contactSubject" value="Website enquiry from frontlinecio.com" />
 
               <!-- Honeypot. Hidden from people, tempting to bots. -->
               <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
@@ -101,7 +101,7 @@
               <ul class="fit-list">
                 <li>Roughly how many people work there</li>
                 <li>Who handles technology today, if anyone</li>
-                <li>Any deadline driving this &mdash; an audit, a renewal, a customer requirement</li>
+                <li>Any deadline driving this: an audit, a renewal, a customer requirement</li>
               </ul>
             </div>
 

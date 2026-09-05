@@ -23,7 +23,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'Frontline works as a single advisory partner across strategy, governance, security, operations, and transformation — so technology decisions stay connected to the business.',
+        'Frontline works as a single advisory partner across strategy, governance, security, operations, and transformation, so technology decisions stay connected to the business.',
     }),
     defineField({
       name: 'sectionNumber',

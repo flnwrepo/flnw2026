@@ -1,7 +1,7 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
 
 /**
- * servicePage — one of the five Frontline service breakout pages.
+ * servicePage, one of the five Frontline service breakout pages.
  *
  * Editors populate a defined set of components. Layout stays in code
  * (ServiceHero, IntroSplit, CapabilityGrid, ProcessFlow, EngagementModels,
@@ -136,7 +136,7 @@ export default defineType({
       of: [{ type: 'string' }],
       options: { layout: 'tags' },
       description:
-        'Framework strip, e.g. CMMC Level 2, NIST SP 800-171, HIPAA Security. Readiness and alignment only — Frontline does not certify.',
+        'Framework strip, e.g. CMMC Level 2, NIST SP 800-171, HIPAA Security. Readiness and alignment only, Frontline does not certify.',
     }),
 
     defineField({
@@ -170,21 +170,21 @@ export default defineType({
     }),
     defineField({
       name: 'finalCtaTitle',
-      title: 'Final CTA — Title',
+      title: 'Final CTA Title',
       type: 'text',
       rows: 2,
       group: 'engage',
     }),
     defineField({
       name: 'finalCtaLede',
-      title: 'Final CTA — Supporting Copy',
+      title: 'Final CTA Supporting Copy',
       type: 'text',
       rows: 3,
       group: 'engage',
     }),
     defineField({
       name: 'finalCtaLabel',
-      title: 'Final CTA — Button Label',
+      title: 'Final CTA Button Label',
       type: 'string',
       group: 'engage',
       initialValue: 'Start a Conversation',

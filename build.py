@@ -22,7 +22,7 @@ import shutil
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
 
-SANITY_SNIPPET = """  <!-- Sanity CMS integration — set window.SANITY_PROJECT_ID to enable -->
+SANITY_SNIPPET = """  <!-- Sanity CMS integration ,  set window.SANITY_PROJECT_ID to enable -->
   <script>window.SANITY_PROJECT_ID = "REPLACE_WITH_PROJECT_ID";</script>
   <script src="/js/sanity.js"></script>"""
 
@@ -32,10 +32,10 @@ PAGES = [
         "src": "index.html",
         "out": "index.html",
         "path": "/",
-        "title": "Frontline — Technology Leadership. Cybersecurity. Governance.",
+        "title": "Frontline ,  Technology Leadership. Cybersecurity. Governance.",
         "description": (
             "Frontline helps small businesses and nonprofits plan, secure, govern, and improve "
-            "their technology environments — combining technology leadership, cybersecurity, GRC, "
+            "their technology environments, combining technology leadership, cybersecurity, GRC, "
             "engineering, and managed services so strategy moves into execution."
         ),
         "sanity": True,
@@ -44,10 +44,10 @@ PAGES = [
         "src": "fractional-cio.html",
         "out": "fractional-cio/index.html",
         "path": "/fractional-cio/",
-        "title": "Fractional CIO — Frontline",
+        "title": "Fractional CIO ,  Frontline",
         "description": (
             "Experienced technology leadership for organizations that need direction, structure, "
-            "accountability, and long-term planning without adding a full-time CIO — backed by the "
+            "accountability, and long-term planning without adding a full-time CIO, backed by the "
             "engineering capability to execute the roadmap."
         ),
     },
@@ -55,7 +55,7 @@ PAGES = [
         "src": "governance-risk-compliance.html",
         "out": "governance-risk-compliance/index.html",
         "path": "/governance-risk-compliance/",
-        "title": "Governance, Risk & Compliance — Frontline",
+        "title": "Governance, Risk & Compliance ,  Frontline",
         "description": (
             "Practical GRC programs built around ongoing risk management, documentation, policies, "
             "evidence, remediation, and audit readiness. CMMC Level 2, NIST, HIPAA, and CIS "
@@ -66,7 +66,7 @@ PAGES = [
         "src": "cybersecurity.html",
         "out": "cybersecurity/index.html",
         "path": "/cybersecurity/",
-        "title": "Cybersecurity — Frontline",
+        "title": "Cybersecurity ,  Frontline",
         "description": (
             "Protect identities, endpoints, cloud applications, users, and business data through "
             "modern cybersecurity controls, 24/7 monitoring, awareness training, and hands-on "
@@ -77,7 +77,7 @@ PAGES = [
         "src": "managed-technology-services.html",
         "out": "managed-technology-services/index.html",
         "path": "/managed-technology-services/",
-        "title": "Managed Technology Services — Frontline",
+        "title": "Managed Technology Services ,  Frontline",
         "description": (
             "Engineering, support, infrastructure, cloud, cybersecurity, documentation, and ongoing "
             "technology management. Advisory-only, co-managed, fully managed, or defined projects."
@@ -87,7 +87,7 @@ PAGES = [
         "src": "private-ai-ai-governance.html",
         "out": "private-ai-ai-governance/index.html",
         "path": "/private-ai-ai-governance/",
-        "title": "Private AI & AI Governance — Frontline",
+        "title": "Private AI & AI Governance ,  Frontline",
         "description": (
             "Secure AI access, practical AI governance, private organizational knowledge, and "
             "private AI architecture designed around business requirements and data sensitivity."
@@ -97,7 +97,7 @@ PAGES = [
         "src": "contact.html",
         "out": "contact/index.html",
         "path": "/contact/",
-        "title": "Contact — Frontline",
+        "title": "Contact ,  Frontline",
         "description": (
             "Start a conversation with Frontline about technology leadership, cybersecurity, "
             "governance, or managed technology services for your business or nonprofit."

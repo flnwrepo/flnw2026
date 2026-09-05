@@ -1,11 +1,11 @@
 import { defineType, defineField, defineArrayMember } from 'sanity';
 
 /**
- * useCasesBlock — "Where Frontline fits".
+ * useCasesBlock, "Where Frontline fits".
  *
  * Situation-led rather than service-led: each entry names a position a
  * prospect recognises themselves in, then points at the service that answers
- * it. Deliberately not numbered — these are not a sequence.
+ * it. Deliberately not numbered, these are not a sequence.
  */
 export default defineType({
   name: 'useCasesBlock',
@@ -81,7 +81,7 @@ export default defineType({
     prepare({ title, cases }: { title?: string; cases?: unknown[] }) {
       return {
         title: 'Where Frontline Fits',
-        subtitle: `${cases?.length ?? 0} situations — ${(title || '').split('\n')[0]}`,
+        subtitle: `${cases?.length ?? 0} situations, ${(title || '').split('\n')[0]}`,
       };
     },
   },

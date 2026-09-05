@@ -25,7 +25,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'A 30-minute conversation with a Frontline principal. No pitch deck, no scope — just a clear read on where you stand and what to do next.',
+        'A 30-minute conversation with a Frontline principal. No pitch deck, no scope, just a clear read on where you stand and what to do next.',
     }),
     defineField({
       name: 'buttonLabel',

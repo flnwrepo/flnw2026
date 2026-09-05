@@ -23,7 +23,7 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'A disciplined path most organizations can move through — one stage building on the last.',
+        'A disciplined path most organizations can move through, one stage building on the last.',
     }),
     defineField({
       name: 'sectionNumber',

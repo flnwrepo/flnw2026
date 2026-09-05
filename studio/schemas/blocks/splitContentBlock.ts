@@ -12,24 +12,24 @@ export default defineType({
     }),
     defineField({
       name: 'leftTitle',
-      title: 'Left — Title',
+      title: 'Left Title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'leftBody',
-      title: 'Left — Body',
+      title: 'Left, Body',
       type: 'array',
       of: [{ type: 'block' }],
     }),
     defineField({
       name: 'rightTitle',
-      title: 'Right — Title',
+      title: 'Right Title',
       type: 'string',
     }),
     defineField({
       name: 'rightBody',
-      title: 'Right — Body',
+      title: 'Right, Body',
       type: 'array',
       of: [{ type: 'block' }],
     }),

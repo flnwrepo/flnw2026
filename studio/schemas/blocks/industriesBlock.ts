@@ -49,7 +49,7 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'Headquartered in Ventura, CA — serving Southern California and available nationwide.',
+        'Headquartered in Ventura, CA, serving Southern California and available nationwide.',
     }),
   ],
   preview: {
