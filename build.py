@@ -93,6 +93,16 @@ PAGES = [
             "private AI architecture designed around business requirements and data sensitivity."
         ),
     },
+    {
+        "src": "contact.html",
+        "out": "contact/index.html",
+        "path": "/contact/",
+        "title": "Contact — Frontline",
+        "description": (
+            "Start a conversation with Frontline about technology leadership, cybersecurity, "
+            "governance, or managed technology services for your business or nonprofit."
+        ),
+    },
 ]
 
 

@@ -93,6 +93,95 @@
     });
   }
 
+  // Contact form. Submits to Web3Forms over fetch so the visitor stays on the
+  // page; without JavaScript the form posts natively and still works.
+  var contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    var statusEl = document.getElementById("contactStatus");
+    var submitBtn = document.getElementById("contactSubmit");
+    var subjectEl = document.getElementById("contactSubject");
+    var keyField = contactForm.querySelector('input[name="access_key"]');
+    var PLACEHOLDER_KEY = "WEB3FORMS_ACCESS_KEY_HERE";
+
+    var setStatus = function (msg, kind) {
+      if (!statusEl) return;
+      statusEl.textContent = msg || "";
+      statusEl.className = "form-status" + (kind ? " is-" + kind : "");
+    };
+
+    contactForm.addEventListener("submit", function (e) {
+      // Let the browser show its own messages for empty or malformed fields.
+      if (!contactForm.checkValidity()) return;
+
+      e.preventDefault();
+
+      if (!keyField || keyField.value === PLACEHOLDER_KEY) {
+        setStatus(
+          "This form is not connected yet — the Web3Forms access key still needs to be set. " +
+            "Email info@frontlinecio.com in the meantime.",
+          "error"
+        );
+        return;
+      }
+
+      var data = new FormData(contactForm);
+      var name = (data.get("name") || "").toString().trim();
+      var email = (data.get("email") || "").toString().trim();
+      var company = (data.get("company") || "").toString().trim();
+
+      // Put the sender in the subject so the PSA ticket summary identifies them.
+      var who = name + (company ? ", " + company : "");
+      data.set("subject", "Website enquiry — " + who + " (" + email + ")");
+      if (subjectEl) subjectEl.value = data.get("subject");
+
+      submitBtn.disabled = true;
+      var originalLabel = submitBtn.textContent;
+      submitBtn.textContent = "Sending…";
+      setStatus("Sending your message…");
+
+      var payload = {};
+      data.forEach(function (value, key) { payload[key] = value; });
+
+      fetch(contactForm.action, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      })
+        .then(function (response) {
+          return response.json().then(function (json) {
+            return { ok: response.status === 200, json: json };
+          });
+        })
+        .then(function (result) {
+          if (!result.ok) throw new Error(result.json && result.json.message);
+          var sent = document.createElement("div");
+          sent.className = "form-sent";
+          sent.setAttribute("role", "status");
+          var h = document.createElement("h3");
+          h.textContent = "Message sent.";
+          var p = document.createElement("p");
+          p.textContent =
+            "Thanks" + (name ? ", " + name : "") + ". We have your note and will be in touch at " +
+            email + ". If it is urgent, call 805.880.2251.";
+          sent.appendChild(h);
+          sent.appendChild(p);
+          contactForm.parentNode.replaceChild(sent, contactForm);
+          sent.focus && sent.setAttribute("tabindex", "-1");
+          if (sent.focus) sent.focus();
+        })
+        .catch(function (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+          var reason = (err && err.message) ? String(err.message).replace(/\.?$/, ".") :
+                       "Something went wrong sending that.";
+          setStatus(
+            reason + " Please email info@frontlinecio.com or call 805.880.2251.",
+            "error"
+          );
+        });
+    });
+  }
+
   // Reveal on scroll
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
