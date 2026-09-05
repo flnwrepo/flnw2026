@@ -1,6 +1,8 @@
-{"_type": "businessQuestion","_id": "q-1","question": "Your team is already using AI. Do you know which tools, with what data?","emphasisWords": ["AI"],"order": 1}
-{"_type": "businessQuestion","_id": "q-2","question": "Is company data leaving your organization through AI tools you haven't sanctioned?","emphasisWords": ["haven't sanctioned"],"order": 2}
-{"_type": "businessQuestion","_id": "q-3","question": "Are you ready for CMMC, NIST, HIPAA, or your next security review?","emphasisWords": ["CMMC"],"order": 3}
-{"_type": "businessQuestion","_id": "q-4","question": "Do you have an AI policy — or is it a document nobody reads?","emphasisWords": ["nobody reads"],"order": 4}
-{"_type": "businessQuestion","_id": "q-5","question": "Are your IT procedures documented — or does one person simply know everything?","emphasisWords": ["one person"],"order": 5}
-{"_type": "businessQuestion","_id": "q-6","question": "Who is managing your vendors, contracts, renewals, and costs?","emphasisWords": [],"order": 6}
+{"_type": "businessQuestion", "_id": "question-1", "text": "Do you have a technology roadmap tied to your business plan and budget?", "emphasisWords": [], "order": 1}
+{"_type": "businessQuestion", "_id": "question-2", "text": "Who is managing your technology vendors, contracts, renewals, and costs?", "emphasisWords": [], "order": 2}
+{"_type": "businessQuestion", "_id": "question-3", "text": "Are your IT procedures documented — or does one person simply know how everything works?", "emphasisWords": ["one person"], "order": 3}
+{"_type": "businessQuestion", "_id": "question-4", "text": "Are you prepared for CMMC, NIST, HIPAA, or your next customer security review?", "emphasisWords": [], "order": 4}
+{"_type": "businessQuestion", "_id": "question-5", "text": "Do you know your highest cybersecurity risks — and who owns remediation?", "emphasisWords": ["who owns"], "order": 5}
+{"_type": "businessQuestion", "_id": "question-6", "text": "Are you confident that critical company data is properly protected and recoverable?", "emphasisWords": [], "order": 6}
+{"_type": "businessQuestion", "_id": "question-7", "text": "Your employees are already using AI. Do you know what tools they are using, and what information they are putting into them?", "emphasisWords": [], "order": 7}
+{"_type": "businessQuestion", "_id": "question-8", "text": "If a major technology decision had to be made tomorrow, who would leadership turn to?", "emphasisWords": [], "order": 8}

@@ -9,7 +9,7 @@ export default defineType({
       name: 'heroEyebrow',
       title: 'Hero Eyebrow',
       type: 'string',
-      initialValue: 'FRONTLINE',
+      initialValue: 'Frontline',
       description: 'Small label above the hero headline.',
     }),
     defineField({
@@ -26,7 +26,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'Frontline helps small and midsized organizations make better technology decisions, reduce risk, and build IT operations that support where the business is going.',
+        'Frontline helps small and midsized organizations plan, secure, govern, and improve their technology environments. We combine experienced technology leadership with cybersecurity, compliance, engineering, and managed services so strategy can move directly into execution.',
     }),
     defineField({
       name: 'heroPrimaryCta',
@@ -38,7 +38,7 @@ export default defineType({
       name: 'heroSecondaryCta',
       title: 'Hero Secondary CTA',
       type: 'string',
-      initialValue: 'Explore Our Approach',
+      initialValue: 'Explore Our Services',
     }),
     defineField({
       name: 'questionsIntro',
@@ -46,7 +46,7 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'The conversations that should be happening in the executive room.',
+        'The conversations that belong in the executive room.',
     }),
     defineField({
       name: 'questionsClose',
@@ -58,7 +58,7 @@ export default defineType({
       name: 'practicesTitle',
       title: 'Practices Section — Title',
       type: 'string',
-      initialValue: 'Five practices. One operating model.',
+      initialValue: 'Five service areas. One partner.',
     }),
     defineField({
       name: 'practicesAside',
@@ -66,13 +66,13 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'Frontline works as a single advisory partner across strategy, governance, security, operations, and transformation — so technology decisions stay connected to the business.',
+        'Frontline can help identify the problem, develop the strategy, establish governance, and then provide the technical resources required to execute the plan.',
     }),
     defineField({
       name: 'modelTitle',
       title: 'Operating Model — Title',
       type: 'string',
-      initialValue: 'From ad-hoc IT to technology leadership.',
+      initialValue: 'Assess → Standardize → Secure → Govern → Lead',
     }),
     defineField({
       name: 'modelAside',
@@ -80,13 +80,13 @@ export default defineType({
       type: 'text',
       rows: 2,
       initialValue:
-        'A disciplined path most organizations can move through — one stage building on the last.',
+        'A disciplined path, one stage building on the last. Frontline can enter at any point — most organizations do not start at the beginning.',
     }),
     defineField({
       name: 'industriesTitle',
       title: 'Industries Section — Title',
       type: 'string',
-      initialValue: 'Where Frontline works.',
+      initialValue: 'Industries & environments.',
     }),
     defineField({
       name: 'industriesNote',
@@ -99,6 +99,8 @@ export default defineType({
     defineField({
       name: 'outcomesTitle',
       title: 'Outcomes Section — Title',
+      description:
+        'Only used if the Outcomes block is on the page. Publish outcomes only when they reflect a real, documented engagement.',
       type: 'text',
       rows: 2,
       initialValue: 'What disciplined technology work looks like in practice.',
@@ -123,7 +125,7 @@ export default defineType({
       type: 'text',
       rows: 3,
       initialValue:
-        'A 30-minute conversation with a Frontline principal. No pitch deck, no scope — just a clear read on where you stand and what to do next.',
+        'Start with a conversation about where you are today, where the business is headed, and where technology, cybersecurity, or governance may be getting in the way.',
     }),
     defineField({
       name: 'ctaButtonLabel',
@@ -148,7 +150,7 @@ export default defineType({
       name: 'footerTagline',
       title: 'Footer — Tagline',
       type: 'string',
-      initialValue: 'Cybersecurity & Compliance-First IT Leadership',
+      initialValue: 'Technology Leadership. Cybersecurity. Governance.',
     }),
     defineField({
       name: 'footerLocation',

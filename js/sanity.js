@@ -24,7 +24,7 @@
       sections[] {
         ...,
         // Expand practice references
-        practices[]->{ title, slug, description, ctaLabel, ctaLink, isFeatured, grcTags, navLabel, order },
+        practices[]->{ title, slug, lede, description, ctaLabel, ctaLink, isFeatured, grcTags, navLabel, order },
         // Expand operating stage references
         stages[]->{ title, description, barHeight, order },
         // Expand industry references
@@ -122,7 +122,7 @@
     var meta = el("div", { class: "hero-meta-strip" });
     meta.appendChild(el("div", { class: "container", html:
       "<span>Frontline</span><span class='meta-div'></span>" +
-      "<span>Technology Advisory &amp; Managed Services</span>" +
+      "<span>Technology Leadership &middot; Cybersecurity &middot; Governance</span>" +
       "<span class='meta-spacer'></span><span>Ventura, CA</span>"
     }));
     section.appendChild(meta);
@@ -136,6 +136,9 @@
         class: "hero-headline reveal",
         html: block.headline.split("\n").map(function(l) { return l.trim(); }).join("<br />"),
       }));
+    }
+    if (block.kicker) {
+      left.appendChild(el("p", { class: "hero-kicker reveal" }, block.kicker));
     }
     var bottom = el("div", { class: "hero-bottom reveal" });
     if (block.supportingCopy) bottom.appendChild(el("p", { class: "hero-supporting" }, block.supportingCopy));
@@ -155,7 +158,7 @@
     // Right — motif
     var right = el("div", { class: "hero-right reveal", "aria-hidden": "true" });
     var motif = el("div", { class: "hero-motif" });
-    ["Strategy", "Priorities", "Execution"].forEach(function (label, i) {
+    ["Plan", "Secure", "Execute"].forEach(function (label, i) {
       motif.appendChild(el("div", { class: "motif-col" }, [
         el("span", { class: "motif-label" }, label),
         el("div", { class: "motif-bar motif-bar-" + (i + 1) }),
@@ -164,7 +167,7 @@
     right.appendChild(motif);
     right.appendChild(el("div", { class: "motif-baseline" }));
     var secondary = el("div", { class: "motif-secondary" });
-    ["Risk", "Governance", "Roadmaps"].forEach(function (label) {
+    ["Leadership", "Governance", "Engineering"].forEach(function (label) {
       secondary.appendChild(el("span", {}, label));
     });
     right.appendChild(secondary);
@@ -220,7 +223,7 @@
     var section = el("section", {
       class: "block block-practices" + (dark ? " block-dark" : ""),
       "data-block-type": "practices",
-      id: "practices",
+      id: "services",
     });
     if (block.sectionNumber) {
       section.appendChild(el("div", {
@@ -244,28 +247,29 @@
     container.appendChild(head);
 
     if (block.practices && block.practices.length) {
-      var list = el("ol", { class: "practices-list" });
+      var list = el("ol", { class: "service-list" });
       block.practices.forEach(function (p) {
         var li = el("li", {
-          class: "practice reveal" + (p.isFeatured ? " practice-featured" : ""),
+          class: "service reveal",
           id: p.slug ? p.slug.current : "",
         });
-        li.appendChild(threeBarMark(p.isFeatured ? "light" : ""));
+        li.appendChild(threeBarMark(dark ? "light" : ""));
 
-        var body = el("div", { class: "practice-body" });
+        var body = el("div", { class: "service-body" });
         body.appendChild(el("h3", {}, p.title));
+        if (p.lede) body.appendChild(el("p", { class: "service-lede" }, p.lede));
         body.appendChild(el("p", {}, p.description));
 
-        if (p.isFeatured && p.grcTags && p.grcTags.length) {
-          var tags = el("div", { class: "grc-tags" });
-          p.grcTags.forEach(function (tag) { tags.appendChild(el("span", {}, tag)); });
+        if (p.grcTags && p.grcTags.length) {
+          var tags = el("ul", { class: "cap-tags" });
+          p.grcTags.forEach(function (tag) { tags.appendChild(el("li", {}, tag)); });
           body.appendChild(tags);
         }
 
         body.appendChild(el("a", {
           class: "link-arrow" + (dark ? " light" : ""),
           href: p.ctaLink || "#contact",
-        }, [p.ctaLabel || "Learn More", " ", arrow()]));
+        }, [(p.ctaLabel || "Learn More") + " ", arrow()]));
         li.appendChild(body);
         list.appendChild(li);
       });
@@ -439,7 +443,8 @@
         var h3 = el("h3", {}, ins.title);
         var p = el("p", {}, ins.excerpt || "");
         var link = el("span", { class: "link-arrow" }, ["Read ", arrow()]);
-        var anchor = el("a", { href: "#insights" }, [meta, h3, p, link]);
+        var href = ins.slug && ins.slug.current ? "/insights/" + ins.slug.current + "/" : null;
+        var anchor = el(href ? "a" : "div", href ? { href: href } : {}, [meta, h3, p, href ? link : null]);
         list.appendChild(el("li", { class: "insight reveal" }, [anchor]));
       });
       container.appendChild(list);

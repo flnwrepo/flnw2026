@@ -19,6 +19,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'lede',
+      title: 'Lede',
+      type: 'string',
+      description: 'One-line positioning statement, e.g. "Technology leadership that turns priorities into action."',
+    }),
+    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',

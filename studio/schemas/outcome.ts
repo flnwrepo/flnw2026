@@ -4,6 +4,8 @@ export default defineType({
   name: 'outcome',
   title: 'Outcome',
   type: 'document',
+  description:
+    'Only publish outcomes based on a real, documented Frontline engagement that can be substantiated. Do not use illustrative or estimated figures.',
   fields: [
     defineField({
       name: 'figure',

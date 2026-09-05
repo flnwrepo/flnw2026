@@ -1,41 +1,130 @@
 # Frontline Website
 
-A modern, editorial website for **Frontline**, a technology advisory and managed
-services firm headquartered in Ventura, CA.
+**Technology Leadership. Cybersecurity. Governance.**
+_Strategy backed by execution._
+
+A static, editorial website for **Frontline**, a technology services company
+headquartered in Ventura, CA, serving small and midsized organizations.
 
 ## Structure
 
 ```
-Frontline2026/
-├── index.html              # Homepage (static HTML, works standalone)
-├── css/
-│   └── styles.css          # Design system
+flnw2026/
+├── build.py                    # Assembles pages from src/ into static HTML
+├── src/                        # ← EDIT HERE
+│   ├── layout.html             # Document shell (head, header slot, footer slot)
+│   ├── partials/
+│   │   ├── header.html         # Shared header + services menu + mobile nav
+│   │   └── footer.html         # Shared footer
+│   └── pages/                  # One file per page — body content only
+│       ├── index.html
+│       ├── fractional-cio.html
+│       ├── governance-risk-compliance.html
+│       ├── cybersecurity.html
+│       ├── managed-technology-services.html
+│       └── private-ai-ai-governance.html
+│
+├── index.html                  # ← GENERATED, committed
+├── fractional-cio/index.html   # ← GENERATED, committed
+├── governance-risk-compliance/index.html
+├── cybersecurity/index.html
+├── managed-technology-services/index.html
+├── private-ai-ai-governance/index.html
+│
+├── css/styles.css              # Design system
 ├── js/
-│   ├── app.js              # Interactions (header, nav, reveals)
-│   └── sanity.js           # Sanity CMS integration (optional)
-├── assets/                 # Logo files
-└── studio/                 # Sanity Studio (CMS)
-    ├── sanity.config.ts    # Studio configuration
-    ├── sanity.cli.ts       # CLI configuration
-    ├── schemas/            # Content type definitions
-    ├── seed/               # Initial content (NDJSON)
-    └── README.md           # Studio setup instructions
+│   ├── app.js                  # Header, services menu, mobile nav, reveals
+│   └── sanity.js               # Optional Sanity CMS integration (homepage)
+├── assets/                     # Logo files
+└── studio/                     # Sanity Studio (CMS)
 ```
 
-## Running the site locally
+## Editing pages
 
-The site is static and works without a CMS. From this directory:
+Page bodies live in `src/pages/`. The header and footer are shared partials, so
+navigation and footer links only need to be changed in one place.
+
+After editing anything under `src/`, regenerate the static HTML:
 
 ```bash
-ruby -rwebrick -e 'WEBrick::HTTPServer.new(Port: 4321, DocumentRoot: Dir.pwd).start'
+python3 build.py
+```
+
+The generated HTML is **committed to the repo**, so the site deploys as a plain
+static folder — no build step is needed on the host.
+
+> Never hand-edit the generated `index.html` files. The next build overwrites them.
+
+## Running locally
+
+Pages use root-relative asset paths (`/css/styles.css`), so they need a web
+server rather than opening the file directly:
+
+```bash
+python3 -m http.server 4321
 ```
 
 Then open `http://localhost:4321`.
 
+## URL structure
+
+| Page | URL |
+|------|-----|
+| Home | `/` |
+| Fractional CIO | `/fractional-cio` |
+| Governance, Risk & Compliance | `/governance-risk-compliance` |
+| Cybersecurity | `/cybersecurity` |
+| Managed Technology Services | `/managed-technology-services` |
+| Private AI & AI Governance | `/private-ai-ai-governance` |
+
+Each service page is a directory containing `index.html`, so clean URLs work on
+any static host without rewrite rules.
+
+## Homepage flow
+
+1. Hero — Technology Leadership. Cybersecurity. Governance.
+2. Executive questions
+3. Five service areas (each links to its breakout page)
+4. Frontline operating model — Assess → Standardize → Secure → Govern → Lead
+5. Strategy backed by execution
+6. GRC / security highlight
+7. Private AI highlight
+8. Industries & experience
+9. Why Frontline
+10. _Insights — intentionally hidden until articles exist_
+11. Final CTA
+
+### About the hidden Insights section
+
+The brief calls for no placeholder "Read More" links. Until real articles are
+published there is nothing to link to, so the section is omitted rather than
+stubbed. To bring it back:
+
+1. Create the article pages under `/insights/`.
+2. Restore the section markup in `src/pages/index.html` (the original is in git
+   history at commit `d07bc6b`).
+3. Add **Insights** back to `src/partials/header.html` and `footer.html`.
+4. Run `python3 build.py`.
+
+## Content accuracy
+
+Two rules the site is built to hold to:
+
+- **No unsupported outcome claims.** Specific readiness timelines, percentage
+  cost reductions, client sizes, and case-study metrics were removed. They may
+  only return if they reflect a real, documented engagement that can be
+  substantiated publicly. The `outcome` Sanity type carries this warning in the
+  Studio.
+- **No vaporware.** The Private AI page separates *Available today*, *Current
+  Frontline Private AI capability*, and *Developing / roadmap*. Roadmap items
+  are not described as generally available.
+
 ## Enabling the CMS (Sanity)
 
-The site ships with static content baked into `index.html`. To manage content
-through a CMS instead:
+The site ships with content baked into the generated HTML and works without a
+CMS. Sanity is wired up for the **homepage** only; the five service pages are
+currently static, with a `servicePage` schema in place for when the front end is
+connected to them.
 
 ### 1. Create a Sanity project
 
@@ -50,9 +139,6 @@ export SANITY_PROJECT_ID=your_project_id_here
 npm install
 ```
 
-Update `sanity.config.ts` and `sanity.cli.ts` with your project ID (or keep
-using the environment variable).
-
 ### 3. Seed initial content
 
 ```bash
@@ -61,40 +147,32 @@ export SANITY_PROJECT_ID=your_project_id_here
 ./seed/import.sh
 ```
 
-This imports all current site content (practices, questions, stages, industries,
-outcomes, insights, settings) into Sanity.
+This imports the current site content (site settings, practices, questions,
+operating stages, industries, insights, and the five service pages) into Sanity.
 
 ### 4. Run the Studio
 
 ```bash
-npm run dev
+npm run dev          # http://localhost:3333
+npm run deploy       # optional: host the Studio at a Sanity URL
 ```
 
-Opens at `http://localhost:3333`. Edit content through the control panel.
+### 5. Connect the front end
 
-### 5. Deploy the Studio (hosted, optional)
-
-```bash
-npm run deploy
-```
-
-This hosts the Studio at a Sanity URL you can access from any browser.
-
-### 6. Connect the frontend
-
-In `index.html`, set the project ID:
+In `src/layout.html`, set the project ID, then rebuild:
 
 ```html
 <script>window.SANITY_PROJECT_ID = "your_project_id_here";</script>
 ```
 
-The site will now fetch content from Sanity on load. If Sanity is unreachable
-or the project ID is not set, the static HTML content is used as fallback.
+If Sanity is unreachable or the project ID is not set, the static HTML content
+is used as the fallback.
 
-### 7. Configure CORS
+### 6. Configure CORS
 
-In [manage.sanity.io](https://manage.sanity.io), under your project's API
+In [manage.sanity.io](https://manage.sanity.io), under the project's API
 settings, add CORS origins:
+
 - `http://localhost:4321` (development)
 - `https://flnw.com` (production)
 
@@ -102,40 +180,46 @@ Allow credentials.
 
 ## Content model
 
-The homepage is built from **section blocks** — you can add, remove, and reorder them in the Sanity Studio to change the page structure without touching code.
+The homepage is built from **section blocks** that can be added, removed, and
+reordered in the Studio. Service pages use a single `servicePage` document type
+with a defined set of components — layout stays in code so the five pages remain
+a visual family.
 
-### Block types
+### Homepage block types
 
 | Block | Description |
 |-------|-------------|
-| **Hero** | Full-viewport headline, supporting copy, CTAs, three-bar motif |
+| **Hero** | Headline, kicker, supporting copy, CTAs, three-bar motif |
 | **Business Questions** | Editorial list of executive questions |
-| **Practice Areas** | Five practices with featured GRC panel (dark or light) |
-| **Operating Model** | Assess → Lead bar diagram (tall/normal/compact spacing) |
-| **Industries** | Industries list (compact by default) |
-| **Outcomes** | Case notes with figures (dark or light) |
-| **Insights** | Journal index of field notes |
+| **Practice Areas** | The five service areas, each linking to its page |
+| **Operating Model** | Assess → Lead bar diagram |
+| **Industries** | Industries and environments |
+| **Outcomes** | Case notes — only for documented, substantiated engagements |
+| **Insights** | Journal index (hidden while unpublished) |
 | **CTA** | Closing call to action with email + phone |
-| **Custom Text** | Free-form rich text section (for new content) |
+| **Custom Text** | Free-form rich text section |
 | **Split Content** | Two-column layout with rich text |
 | **Pull Quote** | Large editorial quote |
 | **Motif Divider** | Intentional whitespace with optional three-bar mark |
 
-### Content types (referenced by blocks)
+### Document types
 
 | Type | Description |
 |------|-------------|
-| `siteSettings` | Footer text, default contact info |
-| `practice` | Practice area (with featured flag, GRC tags) |
-| `businessQuestion` | Individual question (used inline in questions block) |
-| `operatingStage` | Maturity stage (with bar height) |
-| `industry` | Industry name |
-| `outcome` | Case note (figure, title, description) |
-| `insight` | Article (title, excerpt, category, body) |
+| `siteSettings` | Footer text, default contact info, section headings |
+| `servicePage` | A service breakout page (title, slug, eyebrow, headline, intro, hero CTA, problems, capabilities, process, deliverables, engagement models, frameworks, related services, FAQ, final CTA, SEO) |
+| `practice` | Homepage service-area summary (lede, description, capabilities, link) |
+| `businessQuestion` | Individual executive question |
+| `operatingStage` | Operating-model stage (with bar height) |
+| `industry` | Industry or environment |
+| `outcome` | Case note — documented engagements only |
+| `insight` | Article |
 
 ## Design
 
 - **Typography:** Inter (sans) + IBM Plex Mono (labels/metadata)
 - **Palette:** Frontline Navy `#202D4C`, Medium Blue `#4669A0`, Light Blue `#6092D5`, Slate `#697386`, Off-white `#F8F9FB`
+  - `--blue-on-navy` (`#7AAEF0`) is the accent for **text** on navy — `--blue-light` only reaches 4.26:1 there and is reserved for bars and rules
 - **Motif:** Three ascending bars from the Frontline logo, used as list marks, diagram elements, and section accents
-- **Balance:** ~70% light backgrounds, ~30% navy sections
+- **Balance:** roughly 70% light backgrounds, 30% navy sections
+- **Accessibility:** all body and UI text meets WCAG AA contrast; single `<h1>` per page with no heading-level skips; visible focus rings; skip link; reduced-motion support

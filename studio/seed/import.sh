@@ -18,7 +18,7 @@ echo "Seeding Sanity project: $SANITY_PROJECT_ID (dataset: $DATASET)"
 echo ""
 
 # Import content documents first (practices, stages, industries, etc.)
-for file in "$SEED_DIR"/siteSettings.ndjson "$SEED_DIR"/practices.ndjson "$SEED_DIR"/questions.ndjson "$SEED_DIR"/stages.ndjson "$SEED_DIR"/industries.ndjson "$SEED_DIR"/outcomes.ndjson "$SEED_DIR"/insights.ndjson; do
+for file in "$SEED_DIR"/siteSettings.ndjson "$SEED_DIR"/practices.ndjson "$SEED_DIR"/questions.ndjson "$SEED_DIR"/stages.ndjson "$SEED_DIR"/industries.ndjson "$SEED_DIR"/insights.ndjson "$SEED_DIR"/servicePages.ndjson; do
   if [ -f "$file" ]; then
     echo "  Importing: $(basename "$file")"
     npx sanity dataset import "$file" "$DATASET" --replace

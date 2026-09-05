@@ -1,5 +1,5 @@
-{"_type": "operatingStage","_id": "stage-1","title": "Assess","description": "Understand the environment, priorities, risks, and current state.","barHeight": 30,"order": 1}
-{"_type": "operatingStage","_id": "stage-2","title": "Standardize","description": "Create documentation, runbooks, processes, and technology standards.","barHeight": 52,"order": 2}
-{"_type": "operatingStage","_id": "stage-3","title": "Secure","description": "Reduce exposure and strengthen controls.","barHeight": 72,"order": 3}
-{"_type": "operatingStage","_id": "stage-4","title": "Govern","description": "Establish policy, risk management, and compliance operations.","barHeight": 88,"order": 4}
-{"_type": "operatingStage","_id": "stage-5","title": "Lead","description": "Turn technology into roadmaps, priorities, budgets, and executive decisions.","barHeight": 100,"order": 5}
+{"_type": "operatingStage", "_id": "stage-assess", "title": "Assess", "description": "Understand the environment, risks, business requirements, and current state.", "barHeight": 30, "order": 1}
+{"_type": "operatingStage", "_id": "stage-standardize", "title": "Standardize", "description": "Improve documentation, processes, platforms, configurations, and operational consistency.", "barHeight": 52, "order": 2}
+{"_type": "operatingStage", "_id": "stage-secure", "title": "Secure", "description": "Reduce cybersecurity risk across identity, endpoint, cloud, infrastructure, and users.", "barHeight": 72, "order": 3}
+{"_type": "operatingStage", "_id": "stage-govern", "title": "Govern", "description": "Create policies, controls, evidence, accountability, compliance processes, and risk management.", "barHeight": 88, "order": 4}
+{"_type": "operatingStage", "_id": "stage-lead", "title": "Lead", "description": "Align technology investments, priorities, projects, risk, and future direction with the business.", "barHeight": 100, "order": 5}
