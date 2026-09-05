@@ -22,6 +22,7 @@ export default defineType({
         { type: 'questionsBlock', title: 'Business Questions' },
         { type: 'practicesBlock', title: 'Practice Areas' },
         { type: 'operatingModelBlock', title: 'Operating Model' },
+        { type: 'useCasesBlock', title: 'Where Frontline Fits' },
         { type: 'industriesBlock', title: 'Industries' },
         { type: 'outcomesBlock', title: 'Outcomes' },
         { type: 'insightsBlock', title: 'Insights' },

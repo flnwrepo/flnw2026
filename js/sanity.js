@@ -333,6 +333,43 @@
     return section;
   }
 
+  function renderUseCases(block) {
+    var section = el("section", {
+      class: "block block-use-cases",
+      "data-block-type": "useCases",
+      id: "fit",
+    });
+
+    var container = el("div", { class: "container" });
+    var head = el("div", { class: "section-head-async" });
+    if (block.label) head.appendChild(el("p", { class: "section-label" }, block.label));
+    if (block.title) head.appendChild(el("h2", {
+      class: "section-title",
+      html: block.title.replace(/\n/g, "<br />"),
+    }));
+    if (block.aside) head.appendChild(el("p", { class: "section-aside" }, block.aside));
+    container.appendChild(head);
+
+    if (block.useCases && block.useCases.length) {
+      var list = el("ol", { class: "use-cases" });
+      block.useCases.forEach(function (uc) {
+        var headCol = el("div", { class: "uc-head" }, [el("h3", {}, uc.title)]);
+        var bodyCol = el("div", { class: "uc-body" }, [el("p", {}, uc.description)]);
+        if (uc.ctaLabel) {
+          bodyCol.appendChild(el("a", {
+            class: "link-arrow",
+            href: uc.ctaLink || "#contact",
+          }, [uc.ctaLabel + " ", arrow()]));
+        }
+        list.appendChild(el("li", { class: "reveal" }, [headCol, bodyCol]));
+      });
+      container.appendChild(list);
+    }
+
+    section.appendChild(container);
+    return section;
+  }
+
   function renderIndustries(block) {
     var spacingClass = block.spacing === "tall" ? " block-tall" :
                        block.spacing === "compact" ? " block-compact" : "";
@@ -633,6 +670,7 @@
     practicesBlock: renderPractices,
     operatingModelBlock: renderOperatingModel,
     industriesBlock: renderIndustries,
+    useCasesBlock: renderUseCases,
     outcomesBlock: renderOutcomes,
     insightsBlock: renderInsights,
     ctaBlock: renderCta,

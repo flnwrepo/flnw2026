@@ -249,14 +249,14 @@ em { font-style: italic; }
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  height: 104px;
+  height: 112px;
   max-width: var(--maxw);
   margin: 0 auto;
   padding-left: var(--gutter);
   padding-right: var(--gutter);
 }
 .brand { display: inline-flex; align-items: center; }
-.brand-logo { height: 60px; width: auto; }
+.brand-logo { height: 68px; width: auto; }
 
 .primary-nav ul { display: flex; align-items: center; gap: 32px; }
 .primary-nav a {
@@ -290,8 +290,8 @@ em { font-style: italic; }
 .mobile-nav {
   display: none;
   position: absolute;
-  top: 104px; left: 0; right: 0;
-  max-height: calc(100vh - 104px);
+  top: 112px; left: 0; right: 0;
+  max-height: calc(100vh - 112px);
   overflow-y: auto;
   background: var(--white);
   border-bottom: 1px solid var(--line);
@@ -679,7 +679,7 @@ em { font-style: italic; }
   padding-bottom: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-.footer-logo { height: 40px; width: auto; margin-bottom: 20px; }
+.footer-logo { height: 46px; width: auto; margin-bottom: 20px; }
 .footer-tag { font-size: 14px; font-weight: 500; color: #C3CCDE; margin-bottom: 6px; }
 .footer-locations {
   display: flex;
@@ -1380,7 +1380,7 @@ em { font-style: italic; }
    align-self:start shrinks it to its content so it can actually stick. */
 .side-head-sticky {
   position: sticky;
-  top: 132px;
+  top: 140px;
   align-self: start;
 }
 .side-head h2 { margin-bottom: 18px; }
@@ -1701,4 +1701,41 @@ em { font-style: italic; }
 
 @media (max-width: 920px) {
   .fit-panel { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ============================================================
+   WHERE FRONTLINE FITS — situation-led use cases
+   ============================================================ */
+.block-use-cases { background: var(--white); }
+.use-cases { border-top: 1px solid var(--line); }
+.use-cases li {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(24px, 4vw, 72px);
+  padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+  transition: padding-left var(--dur) var(--ease);
+}
+.use-cases li:hover { padding-left: 12px; }
+.uc-head h3 {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 1.2;
+  color: var(--navy);
+  text-wrap: balance;
+}
+.uc-body p {
+  font-size: 16.5px;
+  line-height: 1.68;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin-bottom: 16px;
+}
+.uc-body .link-arrow { font-size: 14.5px; }
+
+@media (max-width: 920px) {
+  .use-cases li { grid-template-columns: 1fr; gap: 12px; padding: 28px 0; }
+  .use-cases li:hover { padding-left: 8px; }
 }
