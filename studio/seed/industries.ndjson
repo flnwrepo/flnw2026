@@ -1,6 +1,6 @@
-{"_type": "industry", "_id": "industry-1", "name": "Healthcare", "order": 1}
-{"_type": "industry", "_id": "industry-2", "name": "Financial Services", "order": 2}
-{"_type": "industry", "_id": "industry-3", "name": "Professional Services", "order": 3}
-{"_type": "industry", "_id": "industry-4", "name": "Government Contractors", "order": 4}
-{"_type": "industry", "_id": "industry-5", "name": "Manufacturing & Production", "order": 5}
-{"_type": "industry", "_id": "industry-6", "name": "Nonprofits", "order": 6}
+{"_type": "industry", "_id": "industry-1", "name": "Manufacturing & Production", "order": 1}
+{"_type": "industry", "_id": "industry-2", "name": "Government Contractors", "order": 2}
+{"_type": "industry", "_id": "industry-3", "name": "Financial Services", "order": 3}
+{"_type": "industry", "_id": "industry-4", "name": "Healthcare", "order": 4}
+{"_type": "industry", "_id": "industry-5", "name": "Fabrication & Machining", "order": 5}
+{"_type": "industry", "_id": "industry-6", "name": "Professional Services", "order": 6}
