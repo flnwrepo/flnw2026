@@ -1168,7 +1168,7 @@ em { font-style: italic; }
    ============================================================ */
 .block-ai-highlight { background: var(--white); }
 .ai-layers { border-top: 1px solid var(--line); max-width: 940px; }
-.ai-layers li {
+.ai-layers > li {
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: clamp(20px, 3vw, 40px);
@@ -1192,6 +1192,38 @@ em { font-style: italic; }
   margin-bottom: 10px;
 }
 .ai-layers p { font-size: 16.5px; line-height: 1.65; color: var(--ink-soft); max-width: 640px; }
+
+/* Capability list inside an ai-layers row. Reset the parent row's grid. */
+.layer-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px 22px;
+  margin-top: 18px;
+  max-width: 660px;
+}
+.ai-layers .layer-features li {
+  display: block;
+  grid-template-columns: none;
+  padding: 0 0 0 14px;
+  border-bottom: 0;
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  letter-spacing: 0.005em;
+  color: var(--slate);
+}
+.ai-layers .layer-features li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--blue-light);
+}
+.block-dark .ai-layers .layer-features li { color: #A6B3CC; }
+.block-dark .ai-layers .layer-features li::before { background: var(--blue-on-navy); }
 .ai-highlight-cta { margin-top: 36px; }
 
 /* ============================================================
@@ -1602,7 +1634,7 @@ em { font-style: italic; }
   .related-list { grid-template-columns: 1fr; }
   .capability-columns { grid-template-columns: 1fr; gap: 26px; }
   .horizon { grid-template-columns: 1fr; }
-  .ai-layers li { grid-template-columns: 1fr; gap: 8px; }
+  .ai-layers > li { grid-template-columns: 1fr; gap: 8px; }
   .layer-index { padding-top: 0; }
   .process-step { flex: 1 1 100%; }
 }
@@ -1653,7 +1685,7 @@ em { font-style: italic; }
 
 /* .ai-layers renders on both light and navy sections. */
 .block-dark .ai-layers { border-top-color: rgba(255,255,255,0.12); }
-.block-dark .ai-layers li { border-bottom-color: rgba(255,255,255,0.12); }
+.block-dark .ai-layers > li { border-bottom-color: rgba(255,255,255,0.12); }
 .block-dark .layer-index { color: var(--blue-on-navy); }
 .block-dark .ai-layers h3 { color: var(--white); }
 .block-dark .ai-layers p { color: #B7C2D8; }
