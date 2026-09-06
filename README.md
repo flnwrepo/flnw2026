@@ -127,26 +127,29 @@ Office locations are kept understated — two cities in the footer, no
 to **support@flnw.com** (the ConnectWise PSA ingestion address). No server or PHP is
 needed, which matters because the site is hosted on GoDaddy.
 
-### One-time setup — the form does not work until this is done
+### Configuration
 
-1. Go to [web3forms.com](https://web3forms.com) and enter **support@flnw.com** as the
-   destination. They email an **access key** to that address.
-2. Open `src/pages/contact.html` and replace `WEB3FORMS_ACCESS_KEY_HERE` with the key.
-3. Run `python3 build.py` and deploy.
+The access key lives in `src/pages/contact.html` as a hidden `access_key` field.
+It is public by design: it identifies the destination mailbox and nothing else. It
+cannot read stored submissions or reach the Web3Forms account.
 
-Until then the form shows a message saying it is not connected and points people at
-`info@frontlinecio.com` — it never fails silently.
+To point the form somewhere else, change the destination on the form inside the
+Web3Forms dashboard, or swap the key here and run `python3 build.py`.
 
-The access key is public by design; it lives in client-side HTML and only identifies
-the destination address. It is not a secret and cannot be used to read anything.
+The Web3Forms account is owned by an admin address, not by support@flnw.com, so
+account recovery does not depend on the shared ingestion mailbox. The dashboard
+keeps 30 days of submissions, which is the fallback if a lead ever fails to
+appear as a ticket.
+
+Free tier: 250 submissions per month.
 
 ### How it reaches the PSA
 
-- **Subject** is built from the submission: `Website enquiry — Jane Doe, Acme (jane@acme.org)`.
+- **Subject** is built from the submission: `Website enquiry: Jane Doe, Acme (jane@acme.org)`.
   The address is in the subject deliberately, so the ConnectWise ticket summary
   identifies the sender even though the mail itself arrives from Web3Forms.
 - **Reply-To** is the submitter's address. Web3Forms sets this automatically from the
-  field named `email` — don't rename that field.
+  field named `email`. Do not rename that field.
 - **Spam**: a hidden `botcheck` honeypot field plus Web3Forms' own server-side
   filtering. Worth watching early on, since anything that gets through becomes a
   ticket rather than just an email.

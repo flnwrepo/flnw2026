@@ -41,8 +41,9 @@
               action="https://api.web3forms.com/submit"
               method="POST"
             >
-              <!-- Web3Forms configuration. Replace the access key. See README. -->
-              <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY_HERE" />
+              <!-- Web3Forms. The access key is public by design: it only names the
+                   destination mailbox and cannot read submissions. See README. -->
+              <input type="hidden" name="access_key" value="8b1178e8-6034-4aea-a231-0860cbfbc235" />
               <input type="hidden" name="from_name" value="Frontline website" />
               <!-- Fallback subject when JavaScript is unavailable. The script
                    replaces this with one naming the sender, so the PSA ticket
