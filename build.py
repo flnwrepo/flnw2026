@@ -2,17 +2,23 @@
 """
 Frontline static site build.
 
-Assembles the shared layout, header and footer around each page body in
-src/pages/ and writes plain static HTML to the repo root:
+Everything the public sees is generated into dist/. Nothing else in the repo is
+deployed, so build.py, src/ and studio/ are never reachable from the live site.
 
-    src/pages/index.html                    ->  index.html
-    src/pages/fractional-cio.html           ->  fractional-cio/index.html
-    ... and so on for each service page
+    src/layout.html          document shell
+    src/partials/*.html      shared header and footer
+    src/pages/*.html         page bodies, one per page
+    src/css, src/js, src/assets
 
-The generated HTML is committed, so the site still deploys as a plain static
-folder with no build step on the host. Run this after editing anything in src/.
+                    |  python3 build.py
+                    v
 
-    python3 build.py
+    dist/index.html
+    dist/<page>/index.html   one directory per page, for clean URLs
+    dist/css, dist/js, dist/assets
+
+dist/ is committed so the host needs no build step of its own. It is generated
+output: never hand-edit anything in it, the next build overwrites it.
 """
 
 import os
@@ -21,18 +27,21 @@ import shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, "src")
+DIST = os.path.join(ROOT, "dist")
 
-SANITY_SNIPPET = """  <!-- Sanity CMS integration ,  set window.SANITY_PROJECT_ID to enable -->
+# Copied verbatim from src/ into dist/
+STATIC_DIRS = ["css", "js", "assets"]
+
+SANITY_SNIPPET = """  <!-- Sanity CMS integration. Set window.SANITY_PROJECT_ID to enable. -->
   <script>window.SANITY_PROJECT_ID = "REPLACE_WITH_PROJECT_ID";</script>
   <script src="/js/sanity.js"></script>"""
 
-# source page  ->  (output path, url path, <title>, meta description, sanity?)
 PAGES = [
     {
         "src": "index.html",
         "out": "index.html",
         "path": "/",
-        "title": "Frontline ,  Technology Leadership. Cybersecurity. Governance.",
+        "title": "Frontline — Technology Leadership. Cybersecurity. Governance.",
         "description": (
             "Frontline helps small businesses and nonprofits plan, secure, govern, and improve "
             "their technology environments, combining technology leadership, cybersecurity, GRC, "
@@ -44,7 +53,7 @@ PAGES = [
         "src": "fractional-cio.html",
         "out": "fractional-cio/index.html",
         "path": "/fractional-cio/",
-        "title": "Fractional CIO ,  Frontline",
+        "title": "Fractional CIO — Frontline",
         "description": (
             "Experienced technology leadership for organizations that need direction, structure, "
             "accountability, and long-term planning without adding a full-time CIO, backed by the "
@@ -55,7 +64,7 @@ PAGES = [
         "src": "governance-risk-compliance.html",
         "out": "governance-risk-compliance/index.html",
         "path": "/governance-risk-compliance/",
-        "title": "Governance, Risk & Compliance ,  Frontline",
+        "title": "Governance, Risk & Compliance — Frontline",
         "description": (
             "Practical GRC programs built around ongoing risk management, documentation, policies, "
             "evidence, remediation, and audit readiness. CMMC Level 2, NIST, HIPAA, and CIS "
@@ -66,7 +75,7 @@ PAGES = [
         "src": "cybersecurity.html",
         "out": "cybersecurity/index.html",
         "path": "/cybersecurity/",
-        "title": "Cybersecurity ,  Frontline",
+        "title": "Cybersecurity — Frontline",
         "description": (
             "Protect identities, endpoints, cloud applications, users, and business data through "
             "modern cybersecurity controls, 24/7 monitoring, awareness training, and hands-on "
@@ -77,7 +86,7 @@ PAGES = [
         "src": "managed-technology-services.html",
         "out": "managed-technology-services/index.html",
         "path": "/managed-technology-services/",
-        "title": "Managed Technology Services ,  Frontline",
+        "title": "Managed Technology Services — Frontline",
         "description": (
             "Engineering, support, infrastructure, cloud, cybersecurity, documentation, and ongoing "
             "technology management. Advisory-only, co-managed, fully managed, or defined projects."
@@ -87,7 +96,7 @@ PAGES = [
         "src": "private-ai-ai-governance.html",
         "out": "private-ai-ai-governance/index.html",
         "path": "/private-ai-ai-governance/",
-        "title": "Private AI & AI Governance ,  Frontline",
+        "title": "Private AI & AI Governance — Frontline",
         "description": (
             "Secure AI access, practical AI governance, private organizational knowledge, and "
             "private AI architecture designed around business requirements and data sensitivity."
@@ -97,7 +106,7 @@ PAGES = [
         "src": "contact.html",
         "out": "contact/index.html",
         "path": "/contact/",
-        "title": "Contact ,  Frontline",
+        "title": "Contact — Frontline",
         "description": (
             "Start a conversation with Frontline about technology leadership, cybersecurity, "
             "governance, or managed technology services for your business or nonprofit."
@@ -123,6 +132,17 @@ def build():
     header = read(SRC, "partials", "header.html").rstrip("\n")
     footer = read(SRC, "partials", "footer.html").rstrip("\n")
 
+    # Rebuild dist/ from scratch so deleted pages never linger on the live site.
+    if os.path.isdir(DIST):
+        shutil.rmtree(DIST)
+    os.makedirs(DIST)
+
+    for name in STATIC_DIRS:
+        src_dir = os.path.join(SRC, name)
+        if os.path.isdir(src_dir):
+            shutil.copytree(src_dir, os.path.join(DIST, name))
+            print("copied %s/" % name)
+
     for page in PAGES:
         body = read(SRC, "pages", page["src"]).rstrip("\n")
 
@@ -139,11 +159,11 @@ def build():
         if leftover:
             raise SystemExit("Unreplaced placeholders in %s: %s" % (page["out"], leftover))
 
-        dest = os.path.join(ROOT, page["out"])
-        os.makedirs(os.path.dirname(dest) or ROOT, exist_ok=True)
+        dest = os.path.join(DIST, page["out"])
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
         with open(dest, "w", encoding="utf-8") as fh:
             fh.write(html)
-        print("built %-46s %6d bytes" % (page["out"], len(html)))
+        print("built  dist/%-44s %6d bytes" % (page["out"], len(html)))
 
 
 if __name__ == "__main__":

@@ -10,63 +10,77 @@ small businesses and nonprofits, with offices in Ventura, CA and New York, NY.
 
 ```
 flnw2026/
-├── build.py                    # Assembles pages from src/ into static HTML
-├── src/                        # ← EDIT HERE
-│   ├── layout.html             # Document shell (head, header slot, footer slot)
+├── build.py                # Generates dist/ from src/
+│
+├── src/                    # ← EDIT HERE
+│   ├── layout.html         # Document shell (head, header slot, footer slot)
 │   ├── partials/
-│   │   ├── header.html         # Shared header + services menu + mobile nav
-│   │   └── footer.html         # Shared footer
-│   └── pages/                  # One file per page — body content only
-│       ├── index.html
-│       ├── fractional-cio.html
-│       ├── governance-risk-compliance.html
-│       ├── cybersecurity.html
-│       ├── managed-technology-services.html
-│       ├── private-ai-ai-governance.html
-│       └── contact.html
+│   │   ├── header.html     # Shared header, services menu, mobile nav
+│   │   └── footer.html     # Shared footer
+│   ├── pages/              # One file per page, body content only
+│   │   ├── index.html
+│   │   ├── fractional-cio.html
+│   │   ├── governance-risk-compliance.html
+│   │   ├── cybersecurity.html
+│   │   ├── managed-technology-services.html
+│   │   ├── private-ai-ai-governance.html
+│   │   └── contact.html
+│   ├── css/styles.css      # Design system
+│   ├── js/
+│   │   ├── app.js          # Header, services menu, mobile nav, contact form
+│   │   └── sanity.js       # Optional Sanity CMS integration (homepage)
+│   └── assets/             # Logo files
 │
-├── index.html                  # ← GENERATED, committed
-├── fractional-cio/index.html   # ← GENERATED, committed
-├── governance-risk-compliance/index.html
-├── cybersecurity/index.html
-├── managed-technology-services/index.html
-├── private-ai-ai-governance/index.html
-├── contact/index.html
+├── dist/                   # ← GENERATED AND COMMITTED. This is what deploys.
+│   ├── index.html
+│   ├── <page>/index.html   # One directory per page, for clean URLs
+│   └── css, js, assets
 │
-├── css/styles.css              # Design system
-├── js/
-│   ├── app.js                  # Header, services menu, mobile nav, reveals
-│   └── sanity.js               # Optional Sanity CMS integration (homepage)
-├── assets/                     # Logo files
-└── studio/                     # Sanity Studio (CMS)
+└── studio/                 # Sanity Studio (CMS)
 ```
+
+**Only `dist/` is published.** `build.py`, `src/` and `studio/` stay in the repo
+but never reach the live site, so nobody can fetch the page sources, the build
+script, or the Studio's `package.json` from frontlinecio.com.
 
 ## Editing pages
 
-Page bodies live in `src/pages/`. The header and footer are shared partials, so
-navigation and footer links only need to be changed in one place.
-
-After editing anything under `src/`, regenerate the static HTML:
+Edit files under `src/`, then rebuild:
 
 ```bash
 python3 build.py
 ```
 
-The generated HTML is **committed to the repo**, so the site deploys as a plain
-static folder — no build step is needed on the host.
+`build.py` deletes and regenerates `dist/` each run, so a page removed from
+`PAGES` disappears from the site rather than lingering.
 
-> Never hand-edit the generated `index.html` files. The next build overwrites them.
+> Never hand-edit anything in `dist/`. The next build overwrites it.
+
+Commit both your `src/` change and the regenerated `dist/`. The host serves
+`dist/` as-is and runs no build of its own, so what you commit is exactly what
+ships.
 
 ## Running locally
 
-Pages use root-relative asset paths (`/css/styles.css`), so they need a web
-server rather than opening the file directly:
-
 ```bash
+cd dist
 python3 -m http.server 4321
 ```
 
-Then open `http://localhost:4321`.
+Then open `http://localhost:4321`. Pages use root-relative asset paths, so they
+need a web server rather than opening the file directly.
+
+## Deployment
+
+Cloudflare Pages, connected to this repo:
+
+| Setting | Value |
+|---------|-------|
+| Production branch | `main` |
+| Build command | *(leave empty)* |
+| Build output directory | `dist` |
+
+No build runs on the host. Every push to `main` publishes `dist/` as it stands.
 
 ## URL structure
 
@@ -80,8 +94,8 @@ Then open `http://localhost:4321`.
 | Private AI & AI Governance | `/private-ai-ai-governance` |
 | Contact | `/contact` |
 
-Each service page is a directory containing `index.html`, so clean URLs work on
-any static host without rewrite rules.
+Each page is a directory containing `index.html`, so clean URLs work on any
+static host without rewrite rules.
 
 ## Homepage flow
 
@@ -214,7 +228,7 @@ npm run deploy       # optional: host the Studio at a Sanity URL
 
 ### 5. Connect the front end
 
-In `src/layout.html`, set the project ID, then rebuild:
+In `src/layout.html`, set the project ID, then run `python3 build.py`:
 
 ```html
 <script>window.SANITY_PROJECT_ID = "your_project_id_here";</script>
@@ -228,7 +242,7 @@ is used as the fallback.
 In [manage.sanity.io](https://manage.sanity.io), under the project's API
 settings, add CORS origins:
 
-- `http://localhost:4321` (development)
+- `http://localhost:4321` (local development)
 - `https://flnw.com` (production)
 
 Allow credentials.
